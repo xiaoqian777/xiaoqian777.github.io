@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
     <title>请使用浏览器打开</title>
     <style>
-        /* Google Font CDN Link */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
         *{
             margin: 0;
@@ -17,6 +16,7 @@
             min-height: 100vh;
             width: 100%;
             background: #fdfcfc;
+            text-align: center;
         }
         .text-boxes{
             height: 100%;
@@ -54,16 +54,16 @@
             display: none;
         }
         .text-boxes .text-box button{
-            height: 45px;
-            width: 155px;
+            height: 70px;
+            width: 200px;
             color: #fff;
             background: #265df2;
             outline: none;
             border: none;
-            border-radius: 8px;
-            font-size: 17px;
+            border-radius: 90px;
+            font-size: 30px;
             font-weight: 400;
-            margin: 8px 0;
+            margin: 0px 0;
             cursor: pointer;
             transition: all 0.4s ease;
         }
@@ -88,17 +88,16 @@
     var isAndroid = ua.indexOf('android') != -1;
     var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
 
-    var notice_openBrowser = `<img src="./pic.jpg" alt="picture" style="max-height: 80%; width: auto; display: block; margin: 0 auto;">
+    var notice_openBrowser = `<img src="./pic.jpg" alt="picture" style="max-height: 75%; height: 75%; width: 100%; display: block; margin: 0 auto;">
+    <div class="text-boxes">
  <div class="text-box JSBox">
- <div class="text-box JSBox">
- <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=ilewP1IYREW35NZbmGcFzryz82NvCklq&authKey=Gofb94ulXWaJKtZMXKs3XPbozV7E7KksL2JA4C0IzIRSJT%2BO8eDB7%2Bkd16da45p%2B&noverify=0&group_code=196936820">
+<a href="` + urlParmStr + `">
         <button type="button">点我直达</button>
 </a>
-      </div>`
-
-    // 判断是不是在微信客户端打开
+      </div>
+ </div>
+    `
     if(isWeixin || isQQ) {
-      // 判断是在Android的微信客户端还是Ios的微信客户端
       if (isAndroid) {
       document.getElementById("tips").innerHTML=notice_openBrowser;
       }else if (isIos) {
@@ -107,9 +106,7 @@
       document.getElementById("tips").innerHTML=notice_openBrowser;
       }
     } else {
-      // 不是微信客户端，直接可以访问链接
       if (urlParmStr == url){
-        // urlParmStr = "https://www.qian.blue";
       }
       console.log(urlParmStr);
       location.href=urlParmStr;
